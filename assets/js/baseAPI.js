@@ -13,16 +13,16 @@ $.ajaxPrefilter(function(options) { //options是调用ajax时传递过来的配�
 
 
 
-    // 不登录不允许访问后台主页
-    // 每次在调用这些有权限的接口时，不论成功还是失败，都会必须执行complete回调函数
-    options.complete = function(res) {
-        // 在complete回调函数中，可以使用res.responseJSON拿到服务器响应回来的数据
-        if (res.responseJSON.status === 1 && res.responseJSON.message === '身份认证失败!') {
-            // 如果状态为1，且身份认证失败，就
-            //1、 强制清空token
-            localStorage.removeItem('token');
-            //2、强制跳转到登录页面
-            location.href = '/login.html';
-        }
-    }
+    // // 不登录不允许访问后台主页
+    // // 每次在调用这些有权限的接口时，不论成功还是失败，都会必须执行complete回调函数
+    // options.complete = function(res) {
+    //     // 在complete回调函数中，可以使用res.responseJSON拿到服务器响应回来的数据
+    //     if (res.responseJSON.status === 1 && res.responseJSON.message === '身份认证失败!') {
+    //         // 如果状态为1，且身份认证失败，就
+    //         //1、 强制清空token
+    //         localStorage.removeItem('token');
+    //         //2、强制跳转到登录页面
+    //         location.href = '/login.html';
+    //     }
+    // }
 })
